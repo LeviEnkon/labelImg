@@ -1303,6 +1303,10 @@ class MainWindow(QMainWindow, WindowMixin):
                                                          '%s - Save annotations to the directory' % __appname__, path,  QFileDialog.ShowDirsOnly
                                                          | QFileDialog.DontResolveSymlinks))
 
+        if os.path.exists(dir_path + "/classes.txt"):
+            self.label_hist = None
+            self.load_predefined_classes(dir_path + "/classes.txt")
+
         if dir_path is not None and len(dir_path) > 1:
             self.default_save_dir = dir_path
 
